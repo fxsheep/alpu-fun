@@ -11,6 +11,7 @@ class ALPUM:
         return self.dev.writeto(ALPUM_I2C_ADDR, bytearray([opval]) + bytearray(data))
 
     def read(self, opval, length):
+        self.dev.writeto(ALPUM_I2C_ADDR, bytearray([opval]))
         return self.dev.readfrom(ALPUM_I2C_ADDR, length)
 
     # Bypass mode, bytewise XOR with 0x01, max 8 bytes
